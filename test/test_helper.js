@@ -16,6 +16,10 @@ mongoose.connection
 
 beforeEach((done) => {
 	mongoose.connection.collections.users.drop(() => {
-		done();
+		mongoose.connection.collections.comments.drop(() => {
+			mongoose.connection.collections.blogposts.drop(() => {
+				done();
+			});
+		});
 	});
 });
